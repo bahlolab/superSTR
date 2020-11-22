@@ -8,11 +8,19 @@ The C99 component of superSTR is a modified and extended version of [mreps](http
 
 Full details of libraries used in superSTR can be found in [the Acknowledgements file](docs/ACKNOWLEDGEMENTS.md).
 
-# Documentation
+## Basic superSTR operations
+
+This section describes how to run basic superSTR analysis with a minimum of fuss on human genomic samples.
 
 [Installing superSTR](docs/INSTALL.md)
 
 1) [Processing FASTQs and BAM files](docs/PROCESSING.md)
-2) Post-processing of sets of samples
-3) Outlier detection
-4) Visualisation
+2) [Post-processing of sets of samples](docs/POSTPROC.md)
+3) [Outlier detection](docs/OUTLIERS.md)
+4) [Visualisation](docs/VISUALISATION.md)
+
+## Extending and advanced superSTR
+
+This section contains information necessary to run superSTR outside of human genomic samples.
+
+* [Compression ratio thresholds and how to set them](docs/THRESHOLD.md)
