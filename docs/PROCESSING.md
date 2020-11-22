@@ -32,6 +32,7 @@ Note: The -o flag is an output prefix rather than a file path; "per_read.txt.gz"
 This can produce slightly counterintuitive behaviour:
 
 `-o output` will produce a file called `outputper_read.txt.gz`
+
 `-o output/` will produce a file called `per_read.txt.gz` in the `output/` directory
 
 ## Advanced or non-standard usage:
