@@ -7,7 +7,7 @@ The next step in superSTR analysis is to produce a set of per-sample and per-mot
 
 ## Input
 
-The post-processing step requires one of two inputs; either a manifest file that contains label and path information, or a directory path.
+The post-processing step requires superSTR per-sample files, and one of two input structures; either a manifest file that contains label and path information, or a directory path.
 
 **Manifest file**
 
