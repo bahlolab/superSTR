@@ -22,4 +22,5 @@ conda activate superSTR
 ## Outlier detection methods
 
 **ABC-bootstrapped 95th quantile estimator**
+
 **Count vector autoencoder**
