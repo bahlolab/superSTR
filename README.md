@@ -11,3 +11,8 @@ Full details of libraries used in superSTR can be found in [the Acknowledgements
 # Documentation
 
 [Installing superSTR](docs/INSTALL.md)
+
+1) [Processing FASTQs and BAM files](docs/PROCESSING.md)
+2) Post-processing of sets of samples
+3) Outlier detection
+4) Visualisation
