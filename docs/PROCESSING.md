@@ -21,10 +21,21 @@ The recommended thresholds for maximising accuracy and precision/recall for huma
 | 200 | 0.46 | 0.46 |
 
 
-## 
-**FASTQ**
+## Running superSTR
 
+**FASTQ:** `superstr --mode=fastq -o output_dir/ -t 0.64 input_1.fastq.gz input_2.fastq.gz`
+
+**BAM:** `superstr --mode=bam -o output_dir/ -t 0.64 input.bam`
+
+Note: The -o flag is an output prefix rather than a file path; "per_read.txt.gz" is appended to the prefix. 
+
+This can produce slightly counterintuitive behaviour:
+
+`-o output` will produce a file called `outputper_read.txt.gz`
+`-o output/` will produce a file called `per_read.txt.gz` in the `output/` directory
 
 ## Advanced or non-standard usage:
 
 The [threshold documentation](docs/THRESHOLD.md) contains a full guide to superSTR thresholds, including an explanation of this table, how it was generated, and information for non-human and general thresholds.
+
+The advanced execution documentation will contain a full list of superSTR input and output modes, including instructions for running superSTR on pipes and named pipes (for example with `fastq-dump` from the SRA toolkit or the outputof the `gsutil cat` command on Google Cloud).
