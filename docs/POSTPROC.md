@@ -40,10 +40,10 @@ input/
 
 ## Post-processing output
 
-Post-processing produces a directory structure that looks like the following:
+Post-processing produces a directory structure with the following structure:
 
 ```
-input/
+analysis/
 └───samples/
 │   │   per_read.txt.gz   
 └───motifs/
