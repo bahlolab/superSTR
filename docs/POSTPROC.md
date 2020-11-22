@@ -32,5 +32,26 @@ input/
 
 ## Running post-processing
 
-**Requirements:** multiparse.py was developed and tested with Python 3.7; it will not work on Python 2, and is untested in versions of Python < 3.7. 
+**Requirements:** multiparse.py was developed and tested with Python 3.7. It will not work on Python 2, and is untested in versions of Python < 3.7. It requires at least two processes (one or more reader processes and a writer process). Your operating system may be able to schedule these if you have less than two CPUs (*e.g.* if you are running on a small 1 CPU cloud instance), but this is not currently tested.
 
+**With a manifest file (4 processes, 150nt reads):** python multiparse.py -m manifest.tsv --output output_dir/ -@ 4 -r 150
+
+**With an input directory (4 processes, 150nt reads):** python multiparse.py --input input_dir/ --output output_dir/ -@ 4 -r 150
+
+## Post-processing output
+
+Post-processing produces a directory structure that looks like the following:
+
+```
+input/
+└───samples/
+│   │   per_read.txt.gz   
+└───motifs/
+│   │   3mers/
+|   │   │   AAC.csv
+|   │   │   ...
+│   │   4mers/
+|   │   │   AAAC.csv
+|   │   │   ...
+|...
+```
