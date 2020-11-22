@@ -1,0 +1,3 @@
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/CMakeFiles/rebuild_cache.dir
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/CMakeFiles/edit_cache.dir
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/CMakeFiles/superstr.dir

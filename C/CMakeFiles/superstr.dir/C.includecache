@@ -1,0 +1,116 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/argtable3.h
+stdio.h
+-
+time.h
+-
+
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/defs.h
+stdio.h
+-
+stdlib.h
+-
+queue.h
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/queue.h
+
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/main.c
+stdlib.h
+-
+string.h
+-
+time.h
+-
+zlib.h
+-
+stdio.h
+-
+fcntl.h
+-
+stdint.h
+-
+kseq.h
+-
+hfile.h
+-
+sam.h
+-
+errno.h
+-
+defs.h
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/defs.h
+queue.h
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/queue.h
+argtable3.h
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/argtable3.h
+
+/Users/fearnley.l/Dropbox/Work Devices/superSTR_root/superSTR/C/queue.h
+sys/cdefs.h
+-
+
+/opt/local/include/zconf.h
+stddef.h
+-
+windows.h
+-
+limits.h
+-
+sys/types.h
+-
+stdarg.h
+-
+stddef.h
+-
+unistd.h
+-
+unixio.h
+-
+
+/opt/local/include/zlib.h
+zconf.h
+/opt/local/include/zconf.h
+
+/usr/local/include/htslib/hfile.h
+string.h
+-
+sys/types.h
+-
+hts_defs.h
+/usr/local/include/htslib/hts_defs.h
+
+/usr/local/include/htslib/hts.h
+stddef.h
+-
+stdint.h
+-
+hts_defs.h
+/usr/local/include/htslib/hts_defs.h
+hts_log.h
+/usr/local/include/htslib/hts_log.h
+
+/usr/local/include/htslib/hts_defs.h
+
+/usr/local/include/htslib/hts_log.h
+hts_defs.h
+/usr/local/include/htslib/hts_defs.h
+
+/usr/local/include/htslib/kseq.h
+ctype.h
+-
+string.h
+-
+stdlib.h
+-
+
+/usr/local/include/htslib/sam.h
+stdint.h
+-
+hts.h
+/usr/local/include/htslib/hts.h
+
