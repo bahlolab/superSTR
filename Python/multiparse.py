@@ -1,7 +1,15 @@
 #!/usr/bin/env python
 
 __author__ = "Liam Fearnley (@lfearnley)"
+__copyright__ = "2017, Walter and Eliza Hall Institute (Licensing TBA)"
+__credits__ = "Liam Fearnley"
+__license__ = "TBC"
+__version__ = "0.0.1"
+__maintainer__ = "Liam Fearnley (@lfearnley)"
+__email__ = "fearnley.l@wehi.edu.au"
+__status__ = "Development"
 
+"""Docstring"""
 import glob
 import gzip
 import multiprocessing
@@ -11,6 +19,7 @@ import sys
 from collections import defaultdict
 from multiprocessing.pool import Pool
 from pathlib import Path
+
 
 def create_output_dir(path_list, clobber):
     for path in path_list:
@@ -151,14 +160,6 @@ def chunks(lst, n):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    mode_group = parser.add_argument_group(title="Mode options")
-    mode_group.add_argument("-S", "--summarise", action="store_true",
-                            dest="summarise", help="Summarise superSTR runs "
-                                                   "into motif files.")
-    mode_group.add_argument("-p", "--plot", action="store_true",
-                            dest="plot_motif", help="Plot motif plots.")
-    mode_group.add_argument("-s", "--sample_plot", action="store_true",
-                            dest="plot_sample", help="Plot per-sample plots.")
     paths_group = parser.add_argument_group(title="File paths")
     paths_group.add_argument("--input", action="store", dest="input_path",
                         help="Input path; should be a directory containing "
@@ -186,7 +187,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     # Set up paths
     thread_count = int(args.threadcount)
-    root_path = os.path.abspath(args.input_path)
     output_root_path = os.path.abspath(args.output_path)
     motif_csv_out_path = output_root_path + "/motifs/"
     sample_csv_out_path = output_root_path + "/samples/"
@@ -194,33 +194,26 @@ if __name__ == "__main__":
     # Create/clobber output directories as required.
     create_output_dir([motif_csv_out_path,sample_csv_out_path], args.clobber)
     # Processing: if summarise flag set, input should be processed first.
-    if args.summarise:
-        pool = Pool(thread_count)
-        m = multiprocessing.Manager()
-        queue = m.JoinableQueue(maxsize=100)
-        if manifest_path:
-            filelist = []
-            with open(manifest_path, 'rt') as manifest_file:
-                for line in manifest_file:
-                    if line.strip() == "":
-                        continue
-                    spline = line.strip().split()
-                    filelist.append(spline[2])
-        else:
-            filelist = glob.glob(root_path + "*/per_read.txt.gz")
-        p = multiprocessing.Process(target=write_file, args=(queue, motif_csv_out_path, sample_csv_out_path, manifest_path))
-        p.start()
-        # split filelist in 10 pieces:
-        inputargs = [(queue, os.path.abspath(file)) for file in filelist]
-        pool.starmap(read_perread_file, inputargs)
-        pool.close()
-        pool.join()
-        queue.put("DONE")
-        p.join()
-        print("Runthrough")
-    if args.plot_motif:
-        # Check that input directory contains at least one summarised CSV
-        pass
-    if args.plot_sample:
-        # Check that input directory contains at least one summarised CSV
-        pass
+    pool = Pool(thread_count)
+    m = multiprocessing.Manager()
+    queue = m.JoinableQueue(maxsize=100)
+    if manifest_path:
+        filelist = []
+        with open(manifest_path, 'rt') as manifest_file:
+            for line in manifest_file:
+                if line.strip() == "":
+                    continue
+                spline = line.strip().split()
+                filelist.append(spline[2])
+    else:
+        root_path = os.path.abspath(args.input_path)
+        filelist = glob.glob(root_path + "*/per_read.txt.gz")
+    p = multiprocessing.Process(target=write_file, args=(queue, motif_csv_out_path, sample_csv_out_path, manifest_path))
+    p.start()
+    # split filelist in 10 pieces:
+    inputargs = [(queue, os.path.abspath(file)) for file in filelist]
+    pool.starmap(read_perread_file, inputargs)
+    pool.close()
+    pool.join()
+    queue.put("DONE")
+    p.join()
