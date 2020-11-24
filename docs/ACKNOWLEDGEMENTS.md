@@ -12,4 +12,4 @@ superSTR's argument parsing uses the [argtable](https://github.com/argtable/argt
 
 # queue.h
 
-superSTR contains a copy of the (BSD queue library)[https://www.freebsd.org/cgi/man.cgi?query=queue&sektion=3&manpath=FreeBSD+12.2-RELEASE+and+Ports]. License information for BSD queue can be found in the header of queue.h.
+superSTR contains a copy of the [BSD queue library](https://www.freebsd.org/cgi/man.cgi?query=queue&sektion=3&manpath=FreeBSD+12.2-RELEASE+and+Ports). License information for BSD queue can be found in the header of queue.h.
