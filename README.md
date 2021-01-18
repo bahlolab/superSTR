@@ -1,6 +1,6 @@
 # superSTR
 
-**24/11: superSTR is currently being loaded into this repo; there will be some updates and new documentation made available in the next 48 hours, particularly around threshold simulation.**
+**superSTR is currently being loaded into this repo; there will be some updates and new documentation made available frequently.**
 
 A lightweight, alignment-free utility for detecting repeat-containing reads in short-read WGS, WES and RNA-seq data. A preprint describing superSTR is in preparation.
 
