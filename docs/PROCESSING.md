@@ -42,6 +42,4 @@ This can produce slightly counterintuitive behaviour:
 
 ## Advanced or non-standard usage:
 
-The [threshold documentation](docs/THRESHOLD.md) contains a full guide to superSTR thresholds, including an explanation of this table, how it was generated, and information for non-human and general thresholds.
-
-The advanced execution documentation will contain a full list of superSTR input and output modes, including instructions for running superSTR on pipes and named pipes (for example with `fastq-dump` from the SRA toolkit or the outputof the `gsutil cat` command on Google Cloud).
+superSTR can also be run on named pipes (or [FIFO](https://man7.org/linux/man-pages/man7/fifo.7.html)s), for example with `fastq-dump` from the SRA toolkit or the output of the `gsutil cat` command on Google Cloud. If using this functionality it's recommended that you treat paired fastq files as single-end fastq and merge them at the end of analysis.
