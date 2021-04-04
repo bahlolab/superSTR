@@ -17,7 +17,8 @@ This section describes how to run basic superSTR analysis with a minimum of fuss
 1) [Processing FASTQs and BAM files](docs/PROCESSING.md)
 2) [Post-processing of sets of samples](docs/POSTPROC.md)
 3) [Outlier detection](docs/OUTLIERS.md)
-4) [Visualisation](docs/VISUALISATION.md)
+4) [Motif screening](docs/SCREENING.md)
+5) [Visualisation](docs/VISUALISATION.md)
 
 ## Extending and advanced superSTR
 
