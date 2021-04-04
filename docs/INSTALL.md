@@ -2,13 +2,14 @@
 
 ## Requirements:
 
-superSTR has not been tested on (and does not currently support) Microsoft Windows. The following instructions have been tested on:
+superSTR has not been tested on (and does not currently support) Microsoft Windows; [a containerised version](#installation-via-docker) of superSTR is available but is untested on that platform. 
+
+The following instructions have been tested on:
 
 * Debian 10.8 "buster"
 * Ubuntu 20.04 LTS "Focal Fossa"
 * Centos 8
 * Apple OSX 10.14.6 "Mojave" 
-
 
 Please make sure the following are installed and available on your system prior to installing superSTR:
 
@@ -41,6 +42,6 @@ Rapid STR characterisation in NGS data.
 
 If you run into issues with installation, check the HTSLIB_ROOT variable, and then try deleting the cmake cache (at superSTR/CMakeCache.txt) and re-running the install process from step 5.
 
-# Installation - Docker
+# Installation via Docker
 
 #TODO: Docker
