@@ -23,7 +23,7 @@ Limits outlier detection to motifs with a motif length <= n.
 
 **Max-length count**
 
-This is simply the (library-size normalised) count of reads which have a repetition running the full length of the read; if the read length is 150nt, this would mean that the entire 150nt sequence is repetitive.
+This is simply the (library-size normalised) count of reads which have a repetition running the full length of the read, or the proportion of reads which are 'pure' repeat in the experiment.
 
 **superSTR summary score**
 
