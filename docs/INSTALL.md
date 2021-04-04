@@ -2,16 +2,16 @@
 
 ## Requirements:
 
-superSTR is tested and working on Debian/Ubuntu, RHEL/Centos, and on OSX. superSTR does not currently support Microsoft Windows.
+superSTR is tested and working on Debian/Ubuntu, RHEL/Centos, and on OSX. superSTR is not tested on and does not currently support Microsoft Windows.
 
 Please make sure the following are installed and available on your system prior to installing superSTR:
 
 * [htslib 1.9](https://github.com/samtools/htslib)
 * [zlib](https://zlib.net/)
-* Cmake (>3.10)
-* curl and libcurl
-* gcc
-* git
+* [Cmake](https://cmake.org/install/) (>3.10)
+* [curl](https://curl.se/download.html) and [libcurl](https://curl.se/libcurl/)
+* [gcc](https://gcc.gnu.org/install/)
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 ## Installation steps:
 
