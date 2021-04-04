@@ -57,4 +57,6 @@ This method estimates the 95% confidence interval for the metric's 95th (or othe
 
 **ABC-bootstrapped 95th quantile estimator on the summary score for known-pathogenic motifs:** `python outliers.py --input input_dir/ --pathos --bootstrapCI --ci 95 -is`
 
-# Extensions
+**ABC-bootstrapped 95th quantile estimator on the pure-repeat count for known-pathogenic motifs:** `python outliers.py --input input_dir/ --pathos -ml --bootstrapCI --ci 95`
+
+**ABC-bootstrapped 99th quantile estimator on the pure-repeat count for known-pathogenic motifs:** `python outliers.py --input input_dir/ --pathos -ml --bootstrapCI --ci 99`
