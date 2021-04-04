@@ -2,8 +2,7 @@
 
 23/11: Note: the current outlier.py script only implements the ABC-bootstrapped 95th quantile estimator due to a bug in the install process for the libraries necessary for the other methods. This is being worked on. 
 
-The choice of which methods should be used with superSTR output is dependent on context, but simple implementations of three methods and two built-in metrics are provided in this library along with instructions for implementing your own anomaly detection methods.
-
+The choice of which methods should be used with superSTR output is context-dependent. We have implemented an outlier detection method that uses the upper bound of the 95% confidence interval on an estimate of the 95th quantile of a background dataset. Alternative strategies that allow explicit specification of expected outlier fraction in your data beyond setting a quantile value may be useful, and should be quick to implement - details are in the [Extensions](#extensions) section.
 
 ## Requirements
 
@@ -57,3 +56,5 @@ Some methods may use the full superSTR library-size normalised read count vector
 This method estimates the 95% confidence interval for the metric's 95th (or other) quantile. It uses the ABC bootstrap (Diciccio T, Efron B, [More accurate confidence intervals in exponential families](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.998.7855&rep=rep1&type=pdf), 1992, Biometrika 79 231–245). The ABC bootstrap provides a more-conservative estimate of the 95th quantile than the standard bootstrap given the distributions of summary scores observed in superSTR analysis.
 
 **ABC-bootstrapped 95th quantile estimator on the summary score for known-pathogenic motifs:** `python outliers.py --input input_dir/ --pathos --bootstrapCI --ci 95 -is`
+
+# Extensions
