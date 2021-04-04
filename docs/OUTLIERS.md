@@ -4,18 +4,6 @@
 
 The choice of which methods should be used with superSTR output is context-dependent. We have implemented an outlier detection method that uses the upper bound of the 95% confidence interval on an estimate of the 95th quantile of a background dataset. Alternative strategies that allow explicit specification of expected outlier fraction in your data beyond setting a quantile value may be useful, and should be quick to implement - details are in the [Extensions](#extensions) section.
 
-## Requirements
-
-The provided outlier detection code requires installation of some python libraries, which I recommend you install using conda (or venv).
-
-```
-conda create --name superSTR python=3.7
-pip install -U pip
-pip install arch
-...
-conda activate superSTR
-```
-
 ## Time and resource requirements
 
 Anomaly detection methods may be highly resource-intensive, or produce outputs for very large numbers of motifs. To help with managing this load we provide a set of (optional) flags that allow you to limit the outlier detection process to certain motifs by identity or length. 
