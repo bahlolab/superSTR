@@ -15,7 +15,7 @@ Manifest files are based on [ExpansionHunter deNovo manifests](https://github.co
 
 | sample ID | case/control | file path | group label |
 
-Deleting the last column with your preferred editor or utility will produce an EHdN manifest file.
+Deleting the last column with your preferred editor or utility will produce an EHDN manifest file.
 
 **Input directory**
 
