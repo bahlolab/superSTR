@@ -17,7 +17,7 @@ Please make sure the following are installed and available on your system prior 
 
 1) Clone this repo to your machine using `git clone https://github.com/bahlolab/superSTR`.
 2) Change into the superSTR directory with `cd superSTR`
-3) On Unix/MacOS, set the the HTSLIB_ROOT environment variable with `export HTSLIB_ROOT=<path_to_your_htslib_installation>`
+3) Set the the HTSLIB_ROOT environment variable with `export HTSLIB_ROOT=<path_to_your_htslib_installation>`
 4) Change into the C source directory with `cd C`
 5) Run `cmake . && make .`
 6) Check that superSTR is correctly compiled by running `./superstr --help`; you should see:
