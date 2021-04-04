@@ -33,7 +33,7 @@ Rapid STR characterisation in NGS data.
   <file>                    input files (or names of pipes in stream mode)
 ```
 
-If you run into issues with installation, check that you've correctly try deleting the cmake cache (at superSTR/CMakeCache.txt) and re-running the install process from step 5.
+If you run into issues with installation, check the HTSLIB_ROOT variable, and then try deleting the cmake cache (at superSTR/CMakeCache.txt) and re-running the install process from step 5.
 
 # Installation - Docker
 
