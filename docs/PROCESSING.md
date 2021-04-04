@@ -12,14 +12,19 @@ For each read within your FASTQ/BAM file, superSTR:
 
 The main difficulty in running superSTR is in identifying the appropriate compression ratio to use as a threshold. This ratio is dependent on the read length and the GC content of the sequence of interest, and must be 
 
-The recommended thresholds for maximising accuracy and precision/recall for human genomic data (42% GC content) at common read lengths are:
+The recommended thresholds for maximising accuracy in some common genetic contexts at common read lengths are:
 
-| Read Length | Accuracy | Precision + Recall |
-|-------------|----------|--------------------|
-| 75 | 0.64 | 0.64 |
-| 150 | 0.50 | 0.49 |
-| 200 | 0.46 | 0.46 |
+| Read Length | H. sapiens (~41% GC) | S. coelicolor (72% GC) | P. falciparum (13.5% GC) | 50% GC | 
+|-------------|----------|----------|----------|----------|
+| 75 | 0.63 | 0.63 | 0.61 | 0.63 |
+| 100 | 0.56 | 0.55 | 0.54 | 0.56 |
+| 125 | 0.52 | 0.51 | 0.49 | 0.52 |
+| 150 | 0.49 | 0.48 | 0.47 | 0.49 |
+| 200 | 0.46 | 0.45 | 0.43 | 0.46 |
+| 250 | 0.44 | 0.42 | 0.40 | 0.44 |
+| 300 | 0.42 | 0.41 | 0.39 | 0.42 |
 
+You can generate similar tables for arbitrary read lengths (and for maximising precision/recall) using simulation.py in the Python script folder.
 
 ## Running superSTR
 
