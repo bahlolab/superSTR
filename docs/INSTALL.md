@@ -20,7 +20,7 @@ Please make sure the following are installed and available on your system prior 
 * [gcc](https://gcc.gnu.org/install/)
 * [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-## Installation steps:
+## Installation steps - read processing:
 
 1) Clone this repo to your machine using `git clone https://github.com/bahlolab/superSTR`.
 2) Change into the superSTR directory with `cd superSTR`
@@ -42,6 +42,16 @@ Rapid STR characterisation in NGS data.
 
 If you run into issues with installation, check the HTSLIB_ROOT variable, and then try deleting the cmake cache (at superSTR/CMakeCache.txt) and re-running the install process from step 5.
 
-# Installation via Docker
+## Installation steps - postprocessing
 
-#TODO: Docker
+We recommend the use of the conda package manager. 
+
+To install all dependencies for superSTR using conda (or miniconda), use `conda env create -f superSTR.yml` from the repository main directory. This will create a superstr environment with all dependencies installed.
+
+## Installation via Docker
+
+Docker and Singularity files in this repository are provided as examples. All care has been taken in their preparation, but no warranty is made as to their security; you use them at your own risk; we strongly recommend using a tool like [Snyk](snyk.io) to check the security of this image prior to running it, or getting your local IT team to check.
+
+These files currently contain only the components required for read processing steps; you will need to install the postprocessing code as outlined above.
+
+Docker: [superSTR/Dockerfile](Dockerfile)
