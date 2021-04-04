@@ -2,7 +2,13 @@
 
 ## Requirements:
 
-superSTR is tested and working on Debian/Ubuntu, RHEL/Centos, and on OSX. superSTR is not tested on and does not currently support Microsoft Windows.
+superSTR has not been tested on (and does not currently support) Microsoft Windows. The following instructions have been tested on:
+
+* Debian 10.8 "buster"
+* Ubuntu 20.04 LTS "Focal Fossa"
+* Centos 8
+* Apple OSX 10.14.6 "Mojave" 
+
 
 Please make sure the following are installed and available on your system prior to installing superSTR:
 
