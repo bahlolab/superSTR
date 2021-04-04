@@ -1,7 +1,5 @@
 # Outlier (anomaly) detection
 
-23/11: Note: the current outlier.py script only implements the ABC-bootstrapped 95th quantile estimator due to a bug in the install process for the libraries necessary for the other methods. This is being worked on. 
-
 The choice of which methods should be used with superSTR output is context-dependent. We have implemented an outlier detection method that uses the upper bound of the 95% confidence interval on an estimate of the 95th quantile of a background dataset. Alternative strategies that allow explicit specification of expected outlier fraction in your data beyond setting a quantile value may be useful, and should be quick to implement - details are in the [Extensions](#extensions) section.
 
 ## Time and resource requirements
@@ -48,3 +46,7 @@ This method estimates the 95% confidence interval for the metric's 95th (or othe
 **ABC-bootstrapped 95th quantile estimator on the pure-repeat count for known-pathogenic motifs:** `python outliers.py --input input_dir/ --pathos -ml --bootstrapCI --ci 95`
 
 **ABC-bootstrapped 99th quantile estimator on the pure-repeat count for known-pathogenic motifs:** `python outliers.py --input input_dir/ --pathos -ml --bootstrapCI --ci 99`
+
+# Extensions
+
+Example implementations of alternative outlier detection methods will be uploaded shortly.
