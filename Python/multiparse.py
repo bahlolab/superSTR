@@ -52,8 +52,6 @@ def read_perread_file(queue, read_summary_path):
                 continue
             if len(split_line) <= 1:
                 continue
-            if line.count("@@SRR") > 1:
-                print("TICK!" + read_summary_path + "\t" + line)
             for i in range(1, len(split_line)):
                 str_tuple = split_line[i].split(":")
                 if len(str_tuple) < 5:
@@ -183,7 +181,7 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         parser.print_help(sys.stderr)
         sys.exit(1)
-    # Parse arguments - TODO: error handling.
+    # Parse arguments - TODO: input sanitisation.
     args = parser.parse_args()
     # Set up paths
     thread_count = int(args.threadcount)
@@ -208,8 +206,6 @@ if __name__ == "__main__":
     else:
         root_path = os.path.abspath(args.input_path)
         filelist = glob.glob(root_path + "*/per_read.txt.gz")
-    for file in filelist:
-        print(file)
     p = multiprocessing.Process(target=write_file, args=(
         queue, motif_csv_out_path, sample_csv_out_path, manifest_path))
     p.start()
@@ -219,4 +215,3 @@ if __name__ == "__main__":
     pool.join()
     queue.put("DONE")
     p.join()
-
