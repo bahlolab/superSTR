@@ -12,7 +12,7 @@ For each read within your FASTQ/BAM file, superSTR:
 
 The main difficulty in running superSTR is in identifying the appropriate compression ratio to use as a threshold. This ratio is dependent on the read length and the GC content of the sequence of interest, and must be 
 
-The recommended thresholds for maximising accuracy in some common genetic contexts at common read lengths are:
+Thresholds for maximising accuracy in some common genetic contexts at common read lengths are:
 
 | Read Length | H. sapiens (~41% GC) | S. coelicolor (72% GC) | P. falciparum (13.5% GC) | 50% GC | 
 |-------------|----------|----------|----------|----------|
@@ -25,6 +25,8 @@ The recommended thresholds for maximising accuracy in some common genetic contex
 | 300 | 0.42 | 0.41 | 0.39 | 0.42 |
 
 You can generate similar tables for arbitrary read lengths (and for maximising precision/recall) using simulation.py in the Python script folder.
+
+Tuning these thresholds down may significantly improve run times at the expense of short repeat sequences. An extension of the simulation method to assist in estimating the impact of tuning these thresholds is in development.
 
 ## Running superSTR
 
