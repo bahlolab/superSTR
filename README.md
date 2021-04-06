@@ -2,7 +2,7 @@
 
 A lightweight, alignment-free utility for detecting repeat-containing reads in short-read WGS, WES and RNA-seq data.
 
-The C99 component of superSTR is a modified and extended version of [mreps](https://github.com/gregorykucherov/mreps) by Roman Kolpakov, Ghizlane Bana and Gregory Kucherov. Full details of mreps can be found at http://mreps.univ-mlv.fr/ and in its accompanying paper; R. Kolpakov, G. Bana, and G. Kucherov, mreps: efficient and flexible detection of tandem repeats in DNA, Nucleic Acid Research, 31 (13), July 1 2003, pp 3672-3678.
+The C99 component of superSTR uses and incorporates a modified version of [mreps](https://github.com/gregorykucherov/mreps) by Roman Kolpakov, Ghizlane Bana and Gregory Kucherov. Full details of mreps can be found at http://mreps.univ-mlv.fr/ and in its accompanying paper; R. Kolpakov, G. Bana, and G. Kucherov, mreps: efficient and flexible detection of tandem repeats in DNA, Nucleic Acid Research, 31 (13), July 1 2003, pp 3672-3678.
 
 Full details of libraries used in superSTR can be found in [the Acknowledgements file](docs/ACKNOWLEDGEMENTS.md).
 
