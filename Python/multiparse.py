@@ -1,15 +1,5 @@
 #!/usr/bin/env python
 
-__author__ = "Liam Fearnley (@lfearnley)"
-__copyright__ = "2017, Walter and Eliza Hall Institute (Licensing TBA)"
-__credits__ = "Liam Fearnley"
-__license__ = "TBC"
-__version__ = "0.0.1"
-__maintainer__ = "Liam Fearnley (@lfearnley)"
-__email__ = "fearnley.l@wehi.edu.au"
-__status__ = "Development"
-
-"""Docstring"""
 import glob
 import gzip
 import multiprocessing
