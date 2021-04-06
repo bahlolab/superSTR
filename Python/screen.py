@@ -152,7 +152,6 @@ if __name__ == "__main__":
         for idx in range(args.min_motif, args.max_motif + 1):
             print(path.join(args.input, "motifs", str(idx) + "mers/*.csv"))
         import sys
-
         sys.exit(1)
     with Pool(processes=args.nprocs) as pool:
         for i in tqdm(pool.imap_unordered(
@@ -171,7 +170,6 @@ if __name__ == "__main__":
     pool.close()
     pool.join()
     res_df = pd.DataFrame(res_list)
-    print(res_df.shape)
     res_df["MW FDR p-value"] = \
         multipletests(res_df["MW permutation p-value"], alpha=0.05,
                       method="fdr_bh")[1]
