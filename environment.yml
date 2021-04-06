@@ -1,0 +1,12 @@
+name: superstr
+dependencies:
+  - python =3.8.3
+  - numpy =1.20.1
+  - matplotlib =3.4.1
+  - pandas =1.2.2
+  - bashtage::arch =4.15
+  - mpmath =1.2.1
+  - scipy =1.6.1
+  - statsmodels =0.12.2
+  - tqdm =4.58.0
+  - seaborn =0.11.1
