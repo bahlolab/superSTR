@@ -8,7 +8,7 @@ The data is drawn from bulk RNA-seq experiments performed on peripheral blood mo
 
 The workflow is written to automate as much of this process as possible on a server running a standard Linux operating system. It has been tested under Centos 8.
 
-We are using a small sampling from a larger study to cut down the download and compute requirements involved. Downloading data and converting to FASTQ represents the bulk of the time involved in this introduction.
+We use a small subset of data from a larger study to reduce the download and compute requirements involved in this demo. Downloading data and converting to FASTQ represents the bulk of the time involved in this introduction.
 
 You'll need about 70 GB of storage available to be able to complete this successfully:
 
@@ -23,7 +23,7 @@ You'll need to make sure the following commands are on your PATH variable. cat, 
 * xargs [xargs --help]
 * gzip [gzip --help]
 
-The below bash scripts are also provided as a Nextflow pipeline to run locally under the same assumptions; you can extend this to use executors (e.g. Slurm, PBS/Torque) as appropriate.
+The below bash scripts will also be provided as a Nextflow pipeline to run locally under the same assumptions soon; you will be able to extend this to use executors (e.g. Slurm, PBS/Torque) as appropriate.
 
 # Overview - superSTR processing
 
@@ -55,8 +55,7 @@ If you were working with data that needed trimming to uniform read length (or ot
 
 1. Download data:
 
-  `prefetch --option-file files/SRP168964_accessions.txt
-`
+  `prefetch --option-file files/SRP168964_accessions.txt`
 
 2. Convert data to fastq.gz files.
 
@@ -150,6 +149,8 @@ The motif screener has help documentation viewable with `python superSTR/Python/
 
 **Notes:** The outlier detector has help documentation viewable with `python superSTR/Python/outliers.py --help`
 
+**Commands:**
+
 1. Run the outlier detector script:
 
   `python superSTR/Python/outliers.py -i superSTR_processed/ -o outliers.tsv --max_motif 6 --bootstrapCI --controllab Control -m SRP168964_manifest.tsv --min_len 75 --max_len 100 -is`
@@ -165,6 +166,8 @@ The motif screener has help documentation viewable with `python superSTR/Python/
 You can specify filetypes for outputs using the extension of the `-o` argument; supported types are [here](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html). Height and width are in inches, and are passed directly to [figsize](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html).
 
 The visualisation code has help documentation viewable with `python superSTR/Python/Visualise.py --help`
+
+**Commands:**
 
 1. Run the visualisation script on the motif of interest:
 
