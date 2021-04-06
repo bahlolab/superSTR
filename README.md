@@ -19,3 +19,8 @@ This section describes how to run basic superSTR analysis with a minimum of fuss
 5) [Visualisation](docs/VISUALISATION.md)
 
 We also provide a detailed [example RNA-seq analysis](docs/EXAMPLE.md) based on the SCA3 data used in the superSTR manuscript to illustrate an end-to-end superSTR analysis.
+
+# Upcoming changes:
+
+* A few modifications to improve UI in the code will be implemented to standardise flags across utilities.
+* mreps' resolution parameter will be exposed to the user in the next update.
