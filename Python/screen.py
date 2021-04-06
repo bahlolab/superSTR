@@ -60,7 +60,7 @@ def p_value_test(n_gt, n_trials, n_grp1, n_grp2):
 
 
 def score_df(motif, f_path, manifest_df, control_label, n_trials,
-             swap_labs=False):
+             swap_labs=False, min_threshold=3):
     current_data = pd.read_csv(f_path)
     current_data = current_data.fillna(0.0)
     current_data = infill(current_data, manifest_df)
@@ -73,7 +73,7 @@ def score_df(motif, f_path, manifest_df, control_label, n_trials,
     for targ in targ_list:
         if targ == control_label:
             continue
-        if len(current_data[current_data["grp"] == targ]) <= 3:
+        if len(current_data[current_data["grp"] == targ]) <= min_threshold:
             continue
         cases = current_data.loc[current_data["grp"] == targ]["info_score"]
         controls = current_data.loc[current_data["grp"] != targ]["info_score"]
@@ -101,13 +101,13 @@ def score_df(motif, f_path, manifest_df, control_label, n_trials,
     return results
 
 
-def process_file(fname, manifest_path, control_label, use_status, n_perm):
+def process_file(fname, manifest_path, control_label, use_status, n_perm, min_threshold):
     manifest_df = pd.read_csv(manifest_path, sep="\t",
                               names=["sample", "status", "path", "grp"])
     manifest_df.set_index("sample", inplace=True)
     motif = basename(fname).replace(".csv", "")
     motif_results = score_df(motif, fname, manifest_df, control_label, n_perm,
-                             swap_labs=use_status)
+                             swap_labs=use_status, min_threshold=min_threshold)
     return motif_results
 
 
@@ -135,6 +135,9 @@ if __name__ == "__main__":
     parser.add_argument("-p", dest="n_permutations", type=int,
                         help="Number of permutations (default 10,000)",
                         default=10000)
+    parser.add_argument("--min_thresh", dest="min_thresh", type=int,
+                        help="Minimum number of samples for a group to be tested",
+                        default=3)
     args = parser.parse_args()
     control_label = args.ctrl_label
     replace_dict = None
@@ -156,7 +159,7 @@ if __name__ == "__main__":
                 functools.partial(process_file, manifest_path=args.manifest,
                                   control_label=control_label,
                                   n_perm=args.n_permutations,
-                                  use_status=args.use_status), file_glob_list),
+                                  use_status=args.use_status, min_threshold=args.min_thresh), file_glob_list),
                 total=len(file_glob_list)):
             for res in i:
                 targ, n_cases, motif, mann_whitney_stat, mann_whitney_p, permu_p = res
@@ -165,7 +168,10 @@ if __name__ == "__main__":
                      "MW statistic": mann_whitney_stat,
                      "MW p-value": mann_whitney_p,
                      "MW permutation p-value": permu_p})
+    pool.close()
+    pool.join()
     res_df = pd.DataFrame(res_list)
+    print(res_df.shape)
     res_df["MW FDR p-value"] = \
         multipletests(res_df["MW permutation p-value"], alpha=0.05,
                       method="fdr_bh")[1]
