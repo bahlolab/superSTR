@@ -2,14 +2,14 @@
 
 ## Requirements:
 
-superSTR has not been tested on (and does not currently support) Microsoft Windows; [a containerised version](#installation-via-docker) of superSTR is available but is untested on that platform. 
-
 The following instructions have been tested on:
 
 * Debian 10.8 "buster"
 * Ubuntu 20.04 LTS "Focal Fossa"
 * Centos 8
 * Apple OSX 10.14.6 "Mojave" 
+
+superSTR does not currently support Microsoft Windows (there's extensive localisation work needed). If you are running Windows, [a containerised version](#installation-via-docker) of superSTR is available but is untested on that platform. 
 
 Please make sure the following are installed and available on your system prior to installing superSTR:
 
