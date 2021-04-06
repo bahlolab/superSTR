@@ -48,9 +48,28 @@ We recommend the use of the conda package manager.
 
 To install all dependencies for superSTR using conda (or miniconda), use `conda env create -f superSTR.yml` from the repository main directory. This will create a superstr environment with all dependencies installed.
 
+## Installation steps - post-processing
+
+The easiest way to install superSTR's python dependencies is via the conda package manager - simply run `conda env create -f environment.yml` while working in the superSTR/ root.
+
+Failing that, the current list of dependencies is:
+
+> - python =3.8.3
+>  - numpy =1.20.1
+>  - matplotlib =3.4.1
+>  - pandas =1.2.2
+>  - bashtage::arch =4.15
+>  - mpmath =1.2.1
+>  - scipy =1.6.1
+>  - statsmodels =0.12.2
+>  - tqdm =4.58.0
+>  - seaborn =0.11.1
+
 ## Installation via Docker
 
-Docker and Singularity files in this repository are provided as examples. All care has been taken in their preparation, but no warranty is made as to their security; you use them at your own risk; we strongly recommend using a tool like [Snyk](snyk.io) to check the security of this image prior to running it, or getting your local IT team to check.
+Docker and Singularity files in this repository are provided as examples and have not been exhaustively tested. All care has been taken in their preparation, but no warranty is made as to their security; you use them at your own risk; we strongly recommend using a tool like [Snyk](snyk.io) to check the security of this image prior to building and running it, or getting your local IT team to check.
+
+A Dockerhub image will be available once the container passes tests at Snyk; the Dockerfile is currently generating an import error on that platform as of 6/4/21.
 
 These files currently contain only the components required for read processing steps; you will need to install the postprocessing code as outlined above.
 
