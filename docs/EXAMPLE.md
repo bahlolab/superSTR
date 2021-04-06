@@ -18,7 +18,7 @@ You'll need about 70 GB of storage available to be able to complete this success
 You'll need to make sure the following commands are on your PATH variable. cat, xargs and gzip should be already installed; you can check each command by running the command in square brackets after each bullet point):
 
 * prefetch (from sra-toolkit) [`prefetch --help`]
-* fasterq-dump (from sra-toolkit) [`fastq-dump --help`]
+* fastq-dump (from sra-toolkit) [`fastq-dump --help`]
 * cat [`cat --help`]
 * xargs [`xargs --help`]
 * gzip [`gzip --help`]
