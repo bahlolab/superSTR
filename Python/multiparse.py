@@ -148,14 +148,11 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     paths_group = parser.add_argument_group(title="File paths")
-    paths_group.add_argument("--input", action="store", dest="input_path",
-                             help="Input path; should be a directory containing "
-                                  "one or more superSTR runs.")
     paths_group.add_argument("-m", "--manifest", dest="manifest_path",
                              default=None,
-                             help="Manifest path")
+                             help="Manifest path", required=True)
     paths_group.add_argument("--output", action="store", dest="output_path",
-                             help="Output path for files.")
+                             help="Output path for files.", required=True)
     optional_arguments = parser.add_argument_group(title="Optional arguments")
     optional_arguments.add_argument("--clobber", action="store_true",
                                     dest="clobber", default=False,
@@ -178,24 +175,20 @@ if __name__ == "__main__":
     output_root_path = os.path.abspath(args.output_path)
     motif_csv_out_path = output_root_path + "/motifs/"
     sample_csv_out_path = output_root_path + "/samples/"
-    manifest_path = os.path.abspath(args.manifest_path)
     # Create/clobber output directories as required.
     create_output_dir([motif_csv_out_path, sample_csv_out_path], args.clobber)
     # Processing: if summarise flag set, input should be processed first.
     pool = Pool(thread_count)
     m = multiprocessing.Manager()
     queue = m.JoinableQueue(maxsize=100)
-    if manifest_path:
-        filelist = []
-        with open(manifest_path, 'rt') as manifest_file:
-            for line in manifest_file:
-                if line.strip() == "":
-                    continue
-                spline = line.strip().split()
-                filelist.append(spline[2])
-    else:
-        root_path = os.path.abspath(args.input_path)
-        filelist = glob.glob(root_path + "*/per_read.txt.gz")
+    manifest_path = os.path.abspath(args.manifest_path)
+    filelist = []
+    with open(manifest_path, 'rt') as manifest_file:
+        for line in manifest_file:
+            if line.strip() == "":
+                continue
+            spline = line.strip().split()
+            filelist.append(spline[2])
     p = multiprocessing.Process(target=write_file, args=(
         queue, motif_csv_out_path, sample_csv_out_path, manifest_path))
     p.start()
