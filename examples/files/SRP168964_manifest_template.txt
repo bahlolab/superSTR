@@ -1,0 +1,6 @@
+SRR8195657	case	xxxxxx/SRR8195657/per_read.txt.gz	SCA3
+SRR8195658	case	xxxxxx/SRR8195658/per_read.txt.gz	SCA3
+SRR8195659	case	xxxxxx/SRR8195659/per_read.txt.gz	SCA3
+SRR8195667	control	xxxxxx/SRR8195667/per_read.txt.gz	Control
+SRR8195668	control	xxxxxx/SRR8195668/per_read.txt.gz	Control
+SRR8195669	control	xxxxxx/SRR8195669/per_read.txt.gz	Control
