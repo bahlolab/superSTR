@@ -1,5 +1,3 @@
-python superSTR/Python/screen.py -m SRP168964_manifest.tsv -i superSTR_processed/ -o screening.tsv --controllab Control --swaplab --min_thresh 1
-
 # Motif screening
 
 Motif screening computes the Mann-Whitney statistic to compare the distribution of information scores between cases and controls for each motif. 
