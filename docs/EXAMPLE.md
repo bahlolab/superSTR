@@ -27,7 +27,7 @@ The below bash scripts will also be provided as a Nextflow pipeline to run local
 
 # Overview - superSTR processing
 
-You'll need to download and install superSTR as per the instructions [here](docs/INSTALL.md).
+You'll need to download and install superSTR as per the instructions [here](INSTALL.md).
 
 We will walk through the following steps (which are generally applicable to most analyses):
 
