@@ -42,12 +42,6 @@ Rapid STR characterisation in NGS data.
 
 If you run into issues with installation, check the HTSLIB_ROOT variable, and then try deleting the cmake cache (at superSTR/CMakeCache.txt) and re-running the install process from step 5.
 
-## Installation steps - postprocessing
-
-We recommend the use of the conda package manager. 
-
-To install all dependencies for superSTR using conda (or miniconda), use `conda env create -f superSTR.yml` from the repository main directory. This will create a superstr environment with all dependencies installed.
-
 ## Installation steps - post-processing
 
 The easiest way to install superSTR's python dependencies is via the conda package manager - simply run `conda env create -f environment.yml` while working in the superSTR/ root.
