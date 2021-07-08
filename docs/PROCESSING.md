@@ -2,8 +2,8 @@
 
 superSTR follows a simple process for processing sequencing data.
 
-For each read within your FASTQ/BAM file, superSTR:
-1. (BAM only) Excludes any read with [SAM flag](https://samtools.github.io/hts-specs/) 256 ('secondary alignment') or 2048 ('supplementary alignment') set.
+For each read within your FASTQ/BAM/CRAM file, superSTR:
+1. (BAM/CRAM only) Excludes any read with [SAM flag](https://samtools.github.io/hts-specs/) 256 ('secondary alignment') or 2048 ('supplementary alignment') set.
 2. Compresses the read sequence with zlib.
 3. Calculates a ratio of the in-memory size of the compressed read sequence to the size of the uncompressed read sequence.
 4. If that ratio is less than the user-specified threshold, it runs mreps on the read with the default mreps parameters specified below.
@@ -33,6 +33,10 @@ Tuning these thresholds down may significantly improve run times at the expense 
 **FASTQ:** `superstr --mode=fastq -o output_dir/ -t 0.64 input_1.fastq.gz input_2.fastq.gz`
 
 **BAM:** `superstr --mode=bam -o output_dir/ -t 0.64 input.bam`
+
+**CRAM:** `superstr --mode=bam -o output_dir/ -t 0.64 input.cram`
+
+superSTR should respect environment settings of REF_PATH and REF_CACHE as outlined in the [htslib documentation](http://www.htslib.org/workflow/). Execution times can vary for CRAM if these settings aren't used due to the need to download and cache sequences from the EBI servers.
 
 Note: The -o flag is an output prefix rather than a file path; "per_read.txt.gz" is appended to the prefix. 
 
