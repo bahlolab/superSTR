@@ -13,7 +13,7 @@ superSTR does not currently support Microsoft Windows (there's extensive localis
 
 Please make sure the following are installed and available on your system prior to installing superSTR:
 
-* [htslib 1.9](https://github.com/samtools/htslib)
+* [htslib >1.9](https://github.com/samtools/htslib)
 * [zlib](https://zlib.net/)
 * [Cmake](https://cmake.org/install/) (>3.10)
 * [curl](https://curl.se/download.html) and [libcurl](https://curl.se/libcurl/)
@@ -22,6 +22,9 @@ Please make sure the following are installed and available on your system prior 
 
 ## Installation steps - read processing:
 
+An example installation script is available [in the examples directory](../examples/install_script.sh). The script creates a superSTR directory containing an htslib 1.11 installation, along with a copy of superSTR, then links and compiles the software.
+
+Alternatively:
 1) Clone this repo to your machine using `git clone https://github.com/bahlolab/superSTR`.
 2) Change into the superSTR directory with `cd superSTR`
 3) Set the the HTSLIB_ROOT environment variable with `export HTSLIB_ROOT=<path_to_your_htslib_installation>`
