@@ -38,13 +38,14 @@ Tuning these thresholds down may significantly improve run times at the expense 
 
 superSTR should respect environment settings of REF_PATH and REF_CACHE as outlined in the [htslib documentation](http://www.htslib.org/workflow/). Execution times can vary for CRAM if these settings aren't used due to the need to download and cache sequences from the EBI servers.
 
-Note: The -o flag is an output prefix rather than a file path; "per_read.txt.gz" is appended to the prefix. 
+Note: The -o flag is an output prefix rather than a file path; "per_read.txt.gz" is appended to the prefix. The current version of superSTR does not create output directories if they are not found.
 
 This can produce slightly counterintuitive behaviour:
 
 `-o output` will produce a file called `outputper_read.txt.gz`
 
 `-o output/` will produce a file called `per_read.txt.gz` in the `output/` directory
+
 
 ## Advanced or non-standard usage:
 
