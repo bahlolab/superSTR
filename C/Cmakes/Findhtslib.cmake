@@ -7,7 +7,6 @@
 
 set(HTSLIB_SEARCH_DIRS
         ${HTSLIB_SEARCH_DIRS}
-        $ENV{HTLSIB_ROOT}
         /gsc/pkg/bio/htslib
         /usr
         /usr/local
@@ -34,7 +33,6 @@ find_path(HTSlib_INCLUDE_DIR
 find_library(HTSlib_LIBRARY
         NAMES hts libhts.a hts.a
         PATHS ${HTSlib_INCLUDE_DIR} ${HTSLIB_SEARCH_DIRS}
-        NO_DEFAULT_PATH
         PATH_SUFFIXES lib lib64 ${_htslib_ver_path} htslib
         HINTS ENV HTSLIB_ROOT
         HINTS ENV HTSLIB_DIR
