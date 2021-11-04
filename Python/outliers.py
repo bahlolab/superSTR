@@ -7,14 +7,13 @@ import numpy as np
 import pandas as pd
 from arch.bootstrap import IIDBootstrap
 
-
 def get_quantile(xval, pc_val=0.95):
     return np.quantile(xval, pc_val)
 
-
-def bootstrap_ci(df, bootstraps=1000, max_len=150, min_len=90,
+def bootstrap_ci(df, motif, bootstraps=1000, max_len=150, min_len=90,
                  info_score=False, max_length=False, lb=False,
-                 control_lab=None, user_pc=0.95):
+                 control_lab=None, user_pc=0.95, use_failover=False):
+    failed_over = False
     if info_score:
         df["iscore"] = 0.0
         for i, row in df.iterrows():
@@ -36,34 +35,56 @@ def bootstrap_ci(df, bootstraps=1000, max_len=150, min_len=90,
             "Unsupported operation - select information score or max length to test.")
         import sys
         sys.exit(1)
+    all_zero = False
     if np.sum(score_vec) == 0.0:
-        ret_str = "No non-zero values in test"
-        return ret_str
-    bs = IIDBootstrap(score_vec)
-    try:
-        ci = bs.conf_int(get_quantile, extra_kwargs={"pc_val": user_pc},
-                         reps=bootstraps, method='bca')
+        all_zero = True
+        threshold = 0.0
+    else:
+        bs = IIDBootstrap(score_vec)
+        try:
+            ci = bs.conf_int(get_quantile, extra_kwargs={"pc_val": user_pc},
+                             reps=bootstraps, method='bca')
+        except:
+            if use_failover:
+                print("WARN: error in BCa bootstrap. Failing over to percentile bootstrap on motif " + df["motif"][0])
+                ci = bs.conf_int(get_quantile, extra_kwargs={"pc_val": user_pc},
+                                 reps=bootstraps, method='percentile')
+                failed_over = True
+            else:
+                ret_str = "Failure"
+                return ret_str
         if lb:
             threshold = ci[0][0]
         else:
             threshold = ci[1][0]
-        ret_str = str(threshold) + "\t"
-        # If a control label is specified, drop this from the dataframe for
-        # testing outliers. Otherwise, test outliers across the dataset.
-        if control_lab:
-            df = df[~df["grp"].isin([control_lab])]
-        if info_score:
-            df = df[df["iscore"] >= threshold]
-        elif max_length:
-            df = df[df[str(max_len)] >= threshold]
+    ret_str = str(threshold) + "\t"
+    # If a control label is specified, drop this from the dataframe for
+    # testing outliers. Otherwise, test outliers across the dataset.
+    if control_lab:
+        df = df[~df["grp"].isin([control_lab])]
+    if info_score:
+        df = df[df["iscore"] >= threshold]
+    elif max_length:
+        df = df[df[str(max_len)] >= threshold]
+    else:
+        print("Unsupported operation: select a metric for calculation.")
+    sample_ids = df["sample"].to_list()
+    ret_str += ",".join(sample_ids)
+    ret_str += "\t"
+    cdict = df["grp"].value_counts().to_dict()
+    ret_str += ",".join([f'{key}:{value}' for key, value in cdict.items()])
+    if failed_over:
+        if use_failover:
+            ret_str+="\t%"
         else:
-            print("Unsupported operation: select a ")
-        ret_str += ",".join(df["sample"].to_list())
-        ret_str += "\t"
-        cdict = df["grp"].value_counts().to_dict()
-        ret_str += ",".join([f'{key}:{value}' for key, value in cdict.items()])
-    except ValueError:
-        ret_str = "Failure in outlier detection library"
+            ret_str!="\tFAILED"
+    else:
+        if all_zero:
+            ret_str+="\tZEROES"
+        elif len(sample_ids) == 0:
+            ret_str+="\tNONE"
+        else:
+            ret_str+="\tBCA"
     return ret_str
 
 
@@ -117,6 +138,8 @@ if __name__ == "__main__":
                               help="Manually set read length.")
     ci_arguments.add_argument("--controllab", action="store", dest="ctrllab",
                               default=None, help="Label for control data")
+    ci_arguments.add_argument("--failover", action="store_true", dest="failover", default=False,
+                              help="Automatically fail over to the percentile bootstrap.")
     metric_arguments = parser.add_argument_group(
         title="Metrics and metric options")
     metric_arguments.add_argument("-is", "--info_score", action="store_true",
@@ -172,7 +195,7 @@ if __name__ == "__main__":
         f = sys.stdout
     else:
         f = open(args.output_path, 'wt')
-    f.write("Motif\tThreshold\tOutlier samples\tGroup counts\n")
+    f.write("Motif\tThreshold\tOutlier samples\tGroup counts\tStatus\n")
     fails = []
     nonzeros = []
     manifest_dict = None
@@ -187,33 +210,22 @@ if __name__ == "__main__":
             df.set_index("sample", drop=False, inplace=True)
             df["grp"].update(pd.Series(manifest_dict))
         df.fillna(value=0.0, inplace=True)
+        motif_str = basename(file).replace(".csv", "")
         if args.ci_95:
-            write_string = bootstrap_ci(df, info_score=args.iscore,
-                                        max_len=args.max_len,
-                                        min_len=args.min_len,
-                                        lb=args.use_lb,
-                                        control_lab=args.ctrllab,
-                                        user_pc=float(args.pc))
-            if write_string is None or "Failure in" in write_string:
-                fails.append(basename(file).replace(".csv", ""))
-            elif "non-zero" in write_string:
-                nonzeros.append(basename(file).replace(".csv", ""))
+            write_string = bootstrap_ci(df, motif_str, info_score=args.iscore,
+                                        max_len=args.max_len, min_len=args.min_len,
+                                        lb=args.use_lb, control_lab=args.ctrllab,
+                                        user_pc=float(args.pc), use_failover=args.failover)
+            if write_string == "Failure":
+                fails.append(motif_str)
             else:
-                f.write(basename(file).replace(".csv", "") + "\t")
+                if not args.verbose and not any(v in write_string for v in ("BCA", "%")):
+                    continue
+                f.write(motif_str + "\t")
                 f.write(write_string)
                 f.write("\n")
-    if args.verbose:
-        if len(fails) != 0:
-            print(
-                "Failures in outlier detection library (usually due to low variance):",
-                file=sys.stderr)
-            for fname in fails:
-                print(fname, file=sys.stderr, end=",")
-            print("", file=sys.stderr)
-        if len(nonzeros) != 0:
-            print("Motifs with all zero values in the tested statistics:",
-                  file=sys.stderr)
-            for fname in nonzeros:
-                print(fname, file=sys.stderr, end=",")
-            print("", file=sys.stderr)
+    if len(fails) > 0:
+        print("The following motifs experienced failures in outlier detection without failover to percentile bootstraps:")
+        for string in fails:
+            print(string)
 
