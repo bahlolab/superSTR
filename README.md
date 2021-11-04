@@ -25,6 +25,10 @@ We also provide a detailed [example RNA-seq analysis](docs/EXAMPLE.md) based on 
 * A few modifications to improve UI in the code will be implemented to standardise flags across utilities.
 * mreps' resolution parameter will be exposed to the user in the next update.
 
+# Licensing
+
+superSTR is released under the GNU General Public License, v2.
+
 # Acknowledgements:
 
 * @jbedo for his help in catching bugs in and patching the Cmake files used to compile superSTR.
