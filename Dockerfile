@@ -1,4 +1,4 @@
-FROM debian:latest AS build_image
+FROM debian:11 AS build_image
 
 RUN groupadd -g 901 superSTR_grp && useradd -u 901 -g superSTR_grp -ms /bin/sh superSTR_user
 
