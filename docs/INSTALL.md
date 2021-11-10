@@ -64,9 +64,9 @@ Failing that, the current list of dependencies is:
 
 ## Installation via Docker
 
-Docker and Singularity files in this repository are provided as examples and have not been exhaustively tested. All care has been taken in their preparation, but no warranty is made as to their security; you use them at your own risk; we strongly recommend using a tool like [Snyk](snyk.io) to check the security of this image prior to building and running it, or getting your local IT team to check.
+Docker and Singularity files in this repository are provided as examples and have not been exhaustively tested. 
 
-A Dockerhub image will be available once the container passes tests at Snyk; the Dockerfile is currently generating an import error on that platform as of 6/4/21.
+All care has been taken in their preparation, but no warranty is made as to their security; you use them at your own risk; we strongly recommend using a tool like [Snyk](snyk.io) to check the security of this image prior to building and running it, or getting your local IT team to check. The Dockerfile in this repository is kept up to date as Snyk reports security fixes.
 
 These files currently contain only the components required for read processing steps; you will need to install the postprocessing code as outlined above.
 
