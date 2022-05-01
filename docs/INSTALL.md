@@ -1,6 +1,6 @@
 # Installation:
 
-## Requirements:
+## Requirements
 
 The following instructions have been tested on:
 
@@ -10,6 +10,33 @@ The following instructions have been tested on:
 * Apple OSX 10.14.6 "Mojave" 
 
 superSTR does not currently support Microsoft Windows (there's extensive localisation work needed). If you are running Windows, [a containerised version](#installation-via-docker) of superSTR is available but is untested on that platform. 
+
+## Conda Installation
+
+The easiest way is to install the superSTR conda package
+
+```
+conda install -c bioconda -c conda-forge superstr
+```
+
+or if you want to create a new environment
+
+```
+conda create -n myenv -c bioconda -c conda-forge superstr
+conda activate myenv
+```
+
+This will install superSTR and all necessary dependencies.
+
+The superSTR binary and the four provided python scripts are then globally available:
+
+```bash
+superstr
+superstr-multiparse.py
+superstr-outliers.py
+superstr-screen.py
+superstr-visualise.py
+```
 
 
 ## Manual installation
