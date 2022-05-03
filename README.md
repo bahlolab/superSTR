@@ -31,4 +31,5 @@ superSTR is released under the GNU General Public License, v2.
 
 # Acknowledgements:
 
-* @jbedo for his help in catching bugs in and patching the Cmake files used to compile superSTR.
+* @jbedo for bugfixes and helping streamline the Cmake files used to compile superSTR.
+* @christopher-schroeder for developing conda installation methods for superSTR and bugfixes.
