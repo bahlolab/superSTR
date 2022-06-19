@@ -47,4 +47,6 @@ RUN echo '/repository/user/cache-disabled = "false"' >> /home/superSTR_user/.ncb
 RUN echo '/repository/user/default-path = "/usr/local/sratoolkit/"' >> /home/superSTR_user/.ncbi/user-settings.mkfg
 RUN echo '/repository/user/main/public/root = "/sra-cache/"' >> /home/superSTR_user/.ncbi/user-settings.mkfg
 RUN vdb-config --root -s /repository/site/main/public/superSTR_user/sra-cache=/home/superSTR_user/sra-cache
-RUN vdb-config --root -s /repository/user/main/public/superSTR_user/sra-cache=/home/superSTR_user/sra-cache
+
+USER root
+RUN apt-get clean

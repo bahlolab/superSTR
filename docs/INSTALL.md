@@ -1,6 +1,6 @@
 # Installation:
 
-## Requirements:
+## Requirements
 
 The following instructions have been tested on:
 
@@ -11,6 +11,36 @@ The following instructions have been tested on:
 
 superSTR does not currently support Microsoft Windows (there's extensive localisation work needed). If you are running Windows, [a containerised version](#installation-via-docker) of superSTR is available but is untested on that platform. 
 
+## Conda Installation
+
+The easiest way is to install the superSTR conda package
+
+```
+conda install -c bioconda -c conda-forge superstr
+```
+
+or if you want to create a new environment
+
+```
+conda create -n myenv -c bioconda -c conda-forge superstr
+conda activate myenv
+```
+
+This will install superSTR and all necessary dependencies.
+
+The superSTR binary and the four provided python scripts are then globally available:
+
+```bash
+superstr
+superstr-multiparse.py
+superstr-outliers.py
+superstr-screen.py
+superstr-visualise.py
+```
+
+
+## Manual installation
+
 Please make sure the following are installed and available on your system prior to installing superSTR:
 
 * [htslib >1.9](https://github.com/samtools/htslib)
@@ -20,7 +50,7 @@ Please make sure the following are installed and available on your system prior 
 * [gcc](https://gcc.gnu.org/install/)
 * [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-## Installation steps - read processing:
+### read processing
 
 An example installation script is available [in the examples directory](../examples/install_script.sh). The script creates a superSTR directory containing an htslib 1.11 installation, along with a copy of superSTR, then links and compiles the software.
 
@@ -45,7 +75,7 @@ Rapid STR characterisation in NGS data.
 
 If you run into issues with installation, check the HTSLIB_ROOT variable, and then try deleting the cmake cache (at superSTR/CMakeCache.txt) and re-running the install process from step 5.
 
-## Installation steps - post-processing
+### post-processing
 
 The easiest way to install superSTR's python dependencies is via the conda package manager - simply run `conda env create -f environment.yml` while working in the superSTR/ root.
 
