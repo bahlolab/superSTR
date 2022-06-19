@@ -34,7 +34,6 @@ def infill(if_df, manifest_df):
     return if_df
 
 def import_data(fpath, manifest_path):
-    manifest_df = pd.read_csv(manifest_path, delimiter="\t", names=["sample", "status", "path", "grp"])
     manifest_df = pd.read_csv(manifest_path, sep="\t",
                               names=["sample", "status", "path", "grp"])
     manifest_df.set_index("sample", inplace=True)
@@ -83,6 +82,8 @@ if __name__ == "__main__":
                         help="label for control/background group; case sensitive")
     parser.add_argument("--aff_lab", dest="aff_lab", action="store",
                         help="label for affected group; case sensitive")
+    parser.add_argument("--downsample_ctrl", dest="downsample_ctrl", default=None, type=float, action="store")
+    parser.add_argument("--downsample_case", dest="downsample_case", default=None, type=float, action="store")
     args = parser.parse_args()
     f = plt.figure(figsize=(args.fig_width,args.fig_height))
     ax = plt.gca()
@@ -94,7 +95,11 @@ if __name__ == "__main__":
         if args.aff_lab not in labs:
             print(args.aff_lab, " is not a valid label.")
     bg_df = df[df["grp"] == args.ctrl_lab]
+    if args.downsample_ctrl:
+        bg_df = bg_df.sample(frag=args.downsample_ctrl)
     aff_df = df[df["grp"] == args.aff_lab]
+    if args.downsample_case:
+        aff_df = aff_df.sample(frac=args.downsample_case)
     plot_violin(bg_df, aff_df, ax, args.ctrl_lab, args.aff_lab, args.aff_lab, args.aff_col, args.ctrl_col)
     plt.tight_layout()
     plt.savefig(args.output)
