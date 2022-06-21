@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     paths_group = parser.add_argument_group(title="Global options.")
-    paths_group.add_argument("-i", action="store", dest="input_path",
+    paths_group.add_argument("-i", "--input", action="store", dest="input_path",
                              help="Input path; should be a directory containing "
                                   "one or more superSTR runs.")
     paths_group.add_argument("-o", action="store", dest="output_path",

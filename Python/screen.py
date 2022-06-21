@@ -113,9 +113,9 @@ def process_file(fname, manifest_path, control_label, use_status, n_perm, min_th
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-m", dest="manifest", help="path to manifest file")
-    parser.add_argument("-o", dest="output", help="output prefix")
-    parser.add_argument("-i", dest="input", help="input path")
+    parser.add_argument("-m", "--manifest", dest="manifest", help="path to manifest file")
+    parser.add_argument("-o", "--output", dest="output", help="output prefix")
+    parser.add_argument("-i", "--input", dest="input", help="input path")
     parser.add_argument("--label", dest="df_string", default="grp",
                         help="column label to use for group status")
     parser.add_argument("--controllab", dest="ctrl_label", default="Control",
