@@ -41,11 +41,11 @@ Some methods may use the full superSTR library-size normalised read count vector
 
 This method estimates the 95% confidence interval for the metric's 95th (or other) quantile. It uses the ABC bootstrap (Diciccio T, Efron B, [More accurate confidence intervals in exponential families](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.998.7855&rep=rep1&type=pdf), 1992, Biometrika 79 231–245). The ABC bootstrap provides a more-conservative estimate of the 95th quantile than the standard bootstrap given the distributions of summary scores observed in superSTR analysis.
 
-**ABC-bootstrapped 95th quantile estimator on the summary score for known-pathogenic motifs:** `python outliers.py --input input_dir/ --pathogenic --bootstrapCI --ci 95 -is`
+**ABC-bootstrapped 95th quantile estimator on the summary score for known-pathogenic motifs:** `python outliers.py -i input_dir/ --pathogenic --bootstrapCI -pc 95 -is`
 
-**ABC-bootstrapped 95th quantile estimator on the pure-repeat count for known-pathogenic motifs:** `python outliers.py --input input_dir/ --pathogenic -ml --bootstrapCI --ci 95`
+**ABC-bootstrapped 95th quantile estimator on the pure-repeat count for known-pathogenic motifs:** `python outliers.py -i input_dir/ --pathogenic -ml --bootstrapCI -pc 95`
 
-**ABC-bootstrapped 99th quantile estimator on the pure-repeat count for known-pathogenic motifs:** `python outliers.py --input input_dir/ --pathogenic -ml --bootstrapCI --ci 99`
+**ABC-bootstrapped 99th quantile estimator on the pure-repeat count for known-pathogenic motifs:** `python outliers.py -i input_dir/ --pathogenic -ml --bootstrapCI -pc 99`
 
 # Extensions
 

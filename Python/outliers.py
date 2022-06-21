@@ -164,7 +164,7 @@ if __name__ == "__main__":
     directory_root = args.input_path
     output_path = args.output_path
     if args.pathos:
-        known_patho_motifs = ["3mers/AGC.csv", "5mers/AAAGT.csv",
+        known_patho_motifs = ["3mers/AGC.csv", "5mers/AAAGT.csv", "5mers/AAATG.csv",
                               "12mers/CCCCGCCCCGCG.csv", "6mers/CCCCGG.csv",
                               "3mers/AAG.csv", "5mers/AATAG.csv",
                               "3mers/ACG.csv", "3mers/CCG.csv",
