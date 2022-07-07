@@ -85,7 +85,7 @@ def write_file(queue, motif_csv_out_path, sample_csv_out_path, manifest_path):
                 print("Fail to read manifest on line: ")
                 print(line)
             group_dict[spline[0]] = spline[3]
-            name_dict[spline[2]] = spline[0]
+            name_dict[os.path.abspath(spline[2])] = spline[0]
     while True:
         case = queue.get()
         # print("Printcase: " + case[0] + "\t" + str(case[1]) + "\tdictlen: " + str(len(case[2])))
