@@ -97,7 +97,7 @@ Running superSTR in parallel on a single server may result in bottlenecks in rea
 
 # Build a manifest file
 
-**Note:** Manifest files are detailed [here](https://github.com/bahlolab/superSTR/blob/main/docs/POSTPROC.md). This step takes a pre-filled example ([`examples/files/SRP168964_manifest_template.txt`](examples/files/SRP168964_manifest_template.txt)) for the SCA3 RNA-seq data and sets up the paths to the outputs you've produced.
+**Note:** Manifest files are detailed [here](https://github.com/bahlolab/superSTR/blob/main/docs/POSTPROC.md). This step takes a pre-filled example ([`examples/files/SRP168964_manifest_template.txt`](../examples/files/SRP168964_manifest_template.txt)) for the SCA3 RNA-seq data and sets up the paths to the outputs you've produced.
 
   You could also do this manually by replacing "xxxxxx" in that file with the relevant path from your machine.
 
