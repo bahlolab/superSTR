@@ -33,7 +33,7 @@ RUN rm sratoolkit.2.9.6-ubuntu64.tar.gz
 USER superSTR_user
 ENV HOME /home/superSTR_user/
 WORKDIR /home/superSTR_user/
-RUN git clone https://github.com/koustav-pal/superSTR
+RUN git clone https://github.com/bahlolab/superSTR
 WORKDIR /home/superSTR_user/superSTR/C/
 ENV PATH="/usr/local/sratoolkit/bin:/home/superSTR_user/superSTR/C:/home/superSTR_user/superSTR/Python:${PATH}"
 RUN cmake .
