@@ -40,7 +40,7 @@ def infill(if_df, manifest_df):
     for add_samp in to_add:
         add_dict["sample"] = add_samp
         add_dict["grp"] = manifest_df.loc[add_samp].grp
-        if_df = if_df.concat(add_dict, ignore_index=True)
+        if_df = pd.concat(add_dict, ignore_index=True)
     return if_df
 
 
