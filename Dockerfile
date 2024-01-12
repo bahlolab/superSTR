@@ -12,7 +12,9 @@ RUN apt-get update && apt-get install -y \
  liblzma-dev \
  libncurses-dev \
  zlib1g-dev \
- wget
+ wget \
+ python3 \
+ pip && pip install numpy==1.26.3 pandas==1.5.3 mpmath==1.3.0 scipy==1.11.4 statsmodels==0.14.1 tqdm==4.66.1 arch==6.3.0
 
 WORKDIR /tmp/htslib/
 RUN git clone https://github.com/samtools/htslib
@@ -31,9 +33,9 @@ RUN rm sratoolkit.2.9.6-ubuntu64.tar.gz
 USER superSTR_user
 ENV HOME /home/superSTR_user/
 WORKDIR /home/superSTR_user/
-RUN git clone https://github.com/bahlolab/superSTR
+RUN git clone https://github.com/koustav-pal/superSTR
 WORKDIR /home/superSTR_user/superSTR/C/
-ENV PATH="/usr/local/sratoolkit/bin:/home/superSTR_user/superSTR/C:${PATH}"
+ENV PATH="/usr/local/sratoolkit/bin:/home/superSTR_user/superSTR/C:/home/superSTR_user/superSTR/Python:${PATH}"
 RUN cmake .
 RUN make
 RUN mkdir /home/superSTR_user/.ncbi/
