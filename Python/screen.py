@@ -77,8 +77,7 @@ def score_df(motif, f_path, manifest_df, control_label, n_trials,
             continue
         cases = current_data.loc[current_data["grp"] == targ]["info_score"]
         controls = current_data.loc[current_data["grp"] != targ]["info_score"]
-        if len(cases) == 0 or len(controls) == 0 or sum(cases) == 0.0 or sum(
-                controls) == 0.0:
+        if len(cases) == 0 or len(controls) == 0 or (sum(cases) == 0.0 and sum(controls) == 0.0):
             continue
         mann_whitney_stat, mann_whitney_p = mannwhitneyu(cases, controls,
                                                          alternative="greater")
